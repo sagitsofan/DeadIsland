@@ -1,5 +1,5 @@
 ﻿var Config = (function () {
-    var fs = require('fs');
+    var fs = require('fs1111');
 
     var obj = JSON.parse(fs.readFileSync(global.appRoot + '/config/nodeDev.json', 'utf8').replace(/^\uFEFF/, ''));
     
