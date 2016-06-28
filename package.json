@@ -1,0 +1,19 @@
+{
+  "name": "DeadIsland",
+  "version": "1.0.0",
+  "description": "Play for deads",
+  "main": "server.js",
+  "author": {
+    "name": "Sagi Tsofan",
+    "email": "sagitsofan@gmail.com"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "1.4.3",
+    "express": "4.14.0",
+    "express-session": "1.13.0",
+    "mongoose": "4.5.0",
+    "poker-evaluator": "0.3.1",
+    "socket.io": "0.0.0"
+  }
+}

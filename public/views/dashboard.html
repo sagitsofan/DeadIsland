@@ -1,0 +1,11 @@
+﻿ <div ng-controller="dashboardController">
+
+    Choose game:
+    <select ng-model="selectedGame">
+        <option ng-repeat="game in games" ng-value="game._id">
+            {{game.name}}
+        </option>
+    </select>
+    <button type="submit" class="btn btn-primary btn-lg" ng-click="joinGame()">Join</button>
+
+</div>

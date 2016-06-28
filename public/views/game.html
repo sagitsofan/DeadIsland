@@ -1,0 +1,36 @@
+﻿
+<div ng-controller="gameController">
+    <button type="submit" class="btn btn-primary btn-lg" ng-click="leaveGame()">Leave game</button>
+
+    <h3>{{currentGame.name}}</h3>
+
+    <b>live on game:</b>
+    <div ng-repeat="player in currentGame.players">
+        {{player._id == currentPlayer._id ? "You" : player.username}}
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg" ng-disabled="disableStartGameButton || currentGame.players.length == 1" ng-click="startGame()">Start game</button>
+    <br />
+    <div ng-repeat="card in myCards">
+        <div ng-bind-html="getCardHtml(card.rank, card.suit)"></div>
+    </div>
+
+    <div ng-show="myChances != null && win === false">Your chances are: {{myChances}}%</div>
+
+    <div ng-show="win" style="color:red;">YOU WON - GET THE MONEY</div>
+    <hr />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <div ng-repeat="card in ComunityCards">
+        <div ng-bind-html="getCardHtml(card.rank, card.suit)"></div>
+    </div>
+ 
+
+</div>

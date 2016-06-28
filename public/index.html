@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="mainApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dead Island - a frienly game :)</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link href="/css/style.css" rel="stylesheet" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script> <!-- Angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script> <!-- Angular routing -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.7/angular-sanitize.js"></script>
+    <script src="//cdn.socket.io/socket.io-1.4.5.js"></script> <!-- Socketing -->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script> <!-- Jquery -->
+
+    <script src="/scripts/config.js"></script>
+    <script src="/scripts/services.js"></script>
+    <script src="/scripts/controllers/baseController.js"></script>
+    <script src="/scripts/controllers/loginController.js"></script>
+    <script src="/scripts/controllers/dashboardController.js"></script>
+    <script src="/scripts/controllers/gameController.js"></script>
+
+    <!-- Cards -->
+    <link rel="stylesheet" href="/css/lib/angular-playing-cards.css" />
+
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+</head>
+<body ng-controller="baseController">
+
+    <div id="fb-root"></div>
+
+    <script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '612044282305123',
+            xfbml: true,
+            version: 'v2.6'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+    <div class="container">
+
+        <div class="jumbotron text-center">
+            <h1>Dead island <span class="label label-info">v 1.0</span></h1>
+        </div>
+
+        <div ng-show="loggedPlayer != null">
+            Hello <b>{{loggedPlayer.username}}</b> | <a href="#" ng-click="logout()">Logout</a>
+        </div>
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+
+                        <div ng-view></div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
