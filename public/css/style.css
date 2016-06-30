@@ -1,6 +1,13 @@
 ﻿
 
-
+.startGame{
+      position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    margin-left: -20%;
+    margin-top: -3%;
+}
 
 .pokerTable{
     width: 80%;
@@ -22,6 +29,9 @@
   border-radius: 25px;
 }
 
+.mySeat{
+  background: red !important;
+}
 
 .seat1{
   top: 10%;
