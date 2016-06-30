@@ -9,24 +9,26 @@ var gameSocket = (function () {
             
             socket.on('PlayerEntersGame', function (gameId, player) {
                 
-                DalGame.attachPlayerToGame(gameId, player._id, function (err, game) { });
-                
-                //join player into current socket
-                socket.join(gameId);
-                
-                //raise event to all clients
-                io.sockets.in(gameId).emit('NewPlayerEntersGame', player);
+                DalGame.attachPlayerToGame(gameId, player._id, function (err, game) {
+                    
+                    //join player into current socket
+                    socket.join(gameId);
+                    
+                    //raise event to all clients
+                    io.sockets.in(gameId).emit('NewPlayerEntersGame', player);
+                });
             });
             
             socket.on('PlayerLeftGame', function (gameId, player) {
                 
-                DalGame.dettachPlayerToGame(gameId, player._id, function (err, game) { });
-                
-                //dispath player from current socket
-                socket.leave(gameId);
-                
-                //raise event to all clients
-                io.sockets.in(gameId).emit('NewPlayerLeftGame', player);
+                DalGame.dettachPlayerToGame(gameId, player._id, function (err, game) { 
+
+                    //dispath player from current socket
+                    socket.leave(gameId);
+                    
+                    //raise event to all clients
+                    io.sockets.in(gameId).emit('NewPlayerLeftGame', player);
+                });
             });
             
             socket.on('PlayerWonGame', function (gameId, player) {
