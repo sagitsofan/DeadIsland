@@ -1,6 +1,6 @@
 ﻿
 <div ng-controller="gameController">
-    <button type="submit" class="btn btn-primary btn-lg" ng-click="leaveGame()">Leave game</button>
+    <button type="submit" class="btn pull-right" style="    position: fixed;top: 0px;right: 0px;" ng-click="leaveGame()">Leave game</button>
 
     <h3>{{currentGame.name}}</h3>
 
@@ -8,6 +8,21 @@
     <div ng-repeat="player in currentGame.players">
         {{player._id == currentPlayer._id ? "You" : player.username}}
     </div>
+
+    <div class="pokerTable">
+        <div class="seat seat1"></div>
+        <div class="seat seat2"></div>
+        <div class="seat seat3"></div>
+        <div class="seat seat4"></div>
+        <div class="seat seat5"></div>
+        <div class="seat seat6"></div>
+        <div class="seat seat7"></div>
+        <div class="seat seat8"></div>
+    </div>
+
+
+
+
 
     <button type="submit" class="btn btn-primary btn-lg" ng-disabled="disableStartGameButton || currentGame.players.length == 1" ng-click="startGame()">Start game</button>
     <br />

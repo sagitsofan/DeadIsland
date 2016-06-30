@@ -1,4 +1,73 @@
-﻿/*http://www.brainjar.com/css/cards/demo.html*/
+﻿
+
+
+
+.pokerTable{
+    width: 80%;
+    background: green;
+    height: 80%;
+    border: solid 8px #000;
+    border-radius: 80px;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+}
+
+.pokerTable .seat{
+  border:solid 4px #000;
+  background: yellow;
+  width:50px;
+  height:50px;
+  position: fixed;
+  border-radius: 25px;
+}
+
+
+.seat1{
+  top: 10%;
+  left: 20%;
+}
+
+.seat2{
+  top: 10%;
+  left: 40%;
+}
+
+.seat3{
+  top: 10%;
+  left: 60%;
+}
+
+.seat4{
+  top: 40%;
+  left: 90%;
+}
+
+.seat5{
+  top: 90%;
+  left: 60%;
+}
+
+.seat6{
+  top: 90%;
+  left: 40%;
+}
+
+.seat7{
+  top: 90%;
+  left: 20%;
+}
+
+
+.seat8{
+  top: 40%;
+  left: 10%;
+}
+
+
+
+
+/*http://www.brainjar.com/css/cards/demo.html*/
 
 .card {
   background-image: url("/images/cardback.gif");
@@ -63,4 +132,4 @@
 .spotC3 { position: absolute; left: 2.50em; top: 2.0em; }
 .spotC4 { position: absolute; left: 2.50em; top: 2.5em; }
 .spotC5 { position: absolute; left: 2.50em; top: 3.5em; }
-
+
