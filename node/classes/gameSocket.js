@@ -33,7 +33,9 @@ var gameSocket = (function () {
             
             socket.on('PlayerWonGame', function (gameId, player) {
                 
-                DalGame.setPlayerWon(gameId, player._id, function (err, game) { });
+                DalGame.setPlayerWon(gameId, player._id, function (err, game) { 
+                
+                });
             });
             
             socket.on('StartGame', function (gameId) {

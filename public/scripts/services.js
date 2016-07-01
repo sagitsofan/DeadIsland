@@ -10,12 +10,24 @@
             });
         }
         
-        data.getActiveGames = function () {
-            return $http.get('/api/game/getactivegames');
+        data.getGames = function () {
+            return $http.get('/api/game/getgames');
         }
         
         data.getGame = function (_id) {
             return $http.get('/api/game/' + _id);
+        }
+        
+        data.addGame = function (game) {
+            return $http.post('/api/game/add', {
+                name: game.name
+            });
+        }
+        
+        data.deleteGame = function (game) {
+            return $http.post('/api/game/delete', {
+                id: game._id
+            });
         }
 
         return data;

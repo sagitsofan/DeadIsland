@@ -78,7 +78,6 @@
 
         }
 
-
         $scope.isPlayerWinner = function(player){
             if ($scope.game){
                 if ($scope.game.eval){
@@ -89,7 +88,6 @@
 
         }
 
-        
         $scope.dealHands = function (game) {
             console.log(game);
             $scope.win = false;
