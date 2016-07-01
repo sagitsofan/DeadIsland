@@ -38,6 +38,10 @@
   background: red !important;
 }
 
+.adminSeat{
+  background: orange !important;
+}
+
 .seat1{
   top: 5%;
   left: 20%;
