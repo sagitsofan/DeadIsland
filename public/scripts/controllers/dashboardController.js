@@ -21,11 +21,13 @@
         }
         
         $scope.createGame = function (game) {
-
-            DataModel.addGame(game).success(function (data) {
-                $scope.game = null;
-                $scope.init();
-            })
+            
+            if (game != undefined && game.name != "") {
+                DataModel.addGame(game).success(function (data) {
+                    $scope.game = null;
+                    $scope.init();
+                })
+            }
         }
 
         $scope.init();
