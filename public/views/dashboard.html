@@ -1,25 +1,22 @@
 ﻿ <div ng-controller="dashboardController">
+ 	<div ng-show="loggedPlayer != null">
+        Hello <b>{{loggedPlayer.username}}</b> | <a href="#" ng-click="logout()">Logout</a>
+    </div>
 
-     <div>
-         <b><u>Choose game:</u></b>
-         <p></p>
 
-         <div ng-repeat="game in games">
-             <p>
-                 <a style="cursor:pointer;" ng-click="joinGame(game)">{{game.name}}</a>
-                 <a style="cursor:pointer;" ng-show="currentPlayer._id === game.admin" ng-click="deleteGame(game)"><b>X</b></a>
-             </p>
-             
-             <u ng-show="game.players.length > 0">Active players:</u>
-             <div ng-show="game.players.length === 0">no active players</div>
-             <p>
-                 <div ng-repeat="player in game.players">
-                     {{player.username}}
-                 </div>
-             </p>
-             <hr />
-         </div>
-     </div>
+
+
+	<div ng-repeat="game in games" ng-click="joinGame(game._id);" class="gameListItem row" >
+        <div class="col-xs-6" style="text-align:left;">
+        	{{game.name}}
+        	<a style="cursor:pointer;" ng-click="deleteGame(game)"><b>X</b></a>
+        </div>
+        <div class="col-xs-6">{{game.players.length}}
+        	<div ng-repeat="player in game.players">
+        		{{player.username}}
+            </div>
+        </div>
+    </div>
 
      <img ng-show="isGamesLoading" src="/images/loader.gif" />
 

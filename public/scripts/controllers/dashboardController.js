@@ -1,3 +1,4 @@
+
 ﻿mainApp.controller('dashboardController', ['$scope', '$http', '$location', '$Player', 'DataModel', function ($scope, $http, $location, $Player, DataModel) {
         
         $scope.currentPlayer = $Player.get();
@@ -6,14 +7,15 @@
             $scope.isGamesLoading = true;
 
             DataModel.getGames().success(function (data) {
-                
+            // DataModel.getActiveGames().success(function (data) {
                 $scope.games = data;
                 $scope.isGamesLoading = false;
             })
         };
         
-        $scope.joinGame = function (joinGame) {
-            $location.path("/game/" + joinGame._id);
+
+        $scope.joinGame = function (gameId) {
+            $location.path("/game/" + gameId);
         };
         
         $scope.deleteGame = function (game) {
