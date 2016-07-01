@@ -1,11 +1,15 @@
 ﻿
 <div ng-controller="gameController">
 
-    <div style="position: fixed;top: 0px;right: 0px;">
-        <button type="submit" class="btn pull-right"  ng-click="leaveGame()">Leave game</button>
-
-        <h3 style="font-size:9px;">{{currentGame.name}}</h3>
+    <div style="position: fixed;top: 0px;left: 0px;">
+        <button type="submit" class="btn pull-left"  ng-click="leaveGame()">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </button>
     </div>
+    <div style="position: fixed;top: 0px;right: 0px;">
+      <div style="font-size:9px;">{{currentGame.name}}</div>
+    </div>
+    
 
 
     <div class="pokerTable">
@@ -16,7 +20,7 @@
 
         
         <div style="" class="">
-          <img ng-repeat="card in getPlayerHand(player)" ng-src="/images/cards/png/{{card | lowercase}}.png" class="playerCard" />
+          <img ng-repeat="card in getPlayerHand(player)" ng-src="/images/cards/svg/{{card | lowercase}}.svg" class="playerCard" />
         </div>
         <div ng-show="isPlayerWinner(player)" style="color:lime;">Winner</div>
       
