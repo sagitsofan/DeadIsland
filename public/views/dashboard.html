@@ -17,14 +17,14 @@
 				<td style="text-align:left;">
 					<div class="Txt23">{{game.name}}</div>
 					<div>
-						|
+						<span class="Gray">|</span>
 						<span ng-repeat="player in game.players">
-							{{player.username}} |
+							{{player.username}} <span class="Gray">|</span>
 						</span>
 					</div>
 				</td>
 				<td style="width:100px;">
-					<a style="cursor:pointer;" ng-click="deleteGame(game)"><b>X</b></a>
+					<a style="cursor:pointer;" ng-click="deleteGame(game);$event.stopPropagation();"><b>X</b></a>
 				</td>
 			</tr>
 		</table>
