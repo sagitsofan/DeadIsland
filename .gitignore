@@ -259,3 +259,4 @@ paket-files/
 *.dat
 
 nodeProd.json
+node/config/nodeProd.json
