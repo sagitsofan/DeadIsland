@@ -21,7 +21,7 @@
 
 
     <div class="pokerTable">
-      <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id,'adminSeat':player._id == currentGame.admin,'advantageSeat':advantage==player._id,'winnerSeat':winner==player._id}">
+      <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id,'adminSeat':isAdmin(player),'advantageSeat':advantage==player._id,'winnerSeat':winner==player._id}">
         <div ng-show="player._id === currentPlayer._id">{{player.username}}</div>
         <div ng-show ="player._id != currentPlayer._id">{{player.username}}</div>
         <div style="" class="">
