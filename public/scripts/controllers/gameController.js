@@ -66,11 +66,34 @@
         $scope.getCardHtml = function (rank, suit) {
             return $Cards.ranks[rank].template.replace(/{{suit}}/g, suit).replace(/{{symbol}}/g, $Cards.suits[suit].symbol);
         }
+
+        $scope.getPlayerHand = function(player){
+            if ($scope.game){
+                var x = _.where($scope.game.hands,{"name":player._id});
+                console.log(x);
+                if (x && x.length > 0 && x[0].hand){
+                    return x[0].hand;
+                }
+            }
+
+        }
+
+
+        $scope.isPlayerWinner = function(player){
+            if ($scope.game){
+                if ($scope.game.eval){
+                    return ($scope.game.eval[player._id] === 1) 
+
+                }
+            }
+
+        }
+
         
         $scope.dealHands = function (game) {
-            
+            console.log(game);
             $scope.win = false;
-            
+            $scope.game = game;
             $scope.ComunityCards = [];
             $scope.myCards = [];
             

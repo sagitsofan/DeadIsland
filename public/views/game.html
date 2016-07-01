@@ -6,41 +6,49 @@
 
         <h3 style="font-size:9px;">{{currentGame.name}}</h3>
     </div>
-    <b>live on game:</b>
 
 
     <div class="pokerTable">
         <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id}">
-            {{$index+1}}. {{player._id == currentPlayer._id ? "You" : player.username}}
+            {{player._id == currentPlayer._id ? "You" : player.username}}
+            <div ng-show="isPlayerWinner(player)" style="color:lime;">Winner</div>
+
+            
+            <div style="position: relative;left: 100%;top: -100%;" class="">
+                <div class="card" style="    width: 5%;height: 10%;position: fixed;"></div>
+                <div class="card" style="    width: 5%;height: 10%;position: fixed;margin-left: -5%;"></div>
+                {{getPlayerHand(player)}}
+            </div>
+
+
         </div>
+        
+
     </div>
 
 
+    <div class="startGame">
 
+<button type="submit" class="btn btn-primary btn-lg " ng-hide="disableStartGameButton || currentGame.players.length == 1" ng-click="startGame()">Start game</button>
 
-
-    <button type="submit" class="btn btn-primary btn-lg startGame" ng-disabled="disableStartGameButton || currentGame.players.length == 1" ng-click="startGame()">Start game</button>
-    <br />
-    <div ng-repeat="card in myCards">
-        <div ng-bind-html="getCardHtml(card.rank, card.suit)"></div>
-    </div>
-
+<div>
     <div ng-show="myChances != null && win === false">Your chances are: {{myChances}}%</div>
 
-    <div ng-show="win" style="color:red;">YOU WON - GET THE MONEY</div>
-    <hr />
-    <br /><br />
-    <br /><br />
-    <br /><br />
-    <br /><br />
-    <br /><br />
-    <br /><br />
-    <br /><br />
-    <br /><br />
-    <br /><br />
-    <div ng-repeat="card in ComunityCards">
-        <div ng-bind-html="getCardHtml(card.rank, card.suit)"></div>
+ <div ng-repeat="card in ComunityCards">
+        {{card}}
+        <!-- <div ng-bind-html="getCardHtml(card.rank, card.suit)"></div> -->
     </div>
+</div>
+
+    </div>
+
+
+    
+    <!-- <div ng-repeat="card in myCards">
+        <div ng-bind-html="getCardHtml(card.rank, card.suit)"></div>
+    </div>-->
+
+   
  
 
 </div>
