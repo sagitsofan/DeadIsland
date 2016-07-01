@@ -48,7 +48,6 @@
     <Compile Include="public\scripts\controllers\loginController.js" />
     <Compile Include="server.js" />
     <Content Include="node\config\nodeDev.json" />
-    <Content Include="node\config\nodeProd.json" />
     <Content Include="package.json" />
     <Content Include="public\css\lib\angular-playing-cards.css" />
     <Content Include="public\css\style.css" />

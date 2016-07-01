@@ -20,7 +20,8 @@
         
         data.addGame = function (game) {
             return $http.post('/api/game/add', {
-                name: game.name
+                name: game.name,
+                admin: game.admin
             });
         }
         

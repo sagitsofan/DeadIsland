@@ -28,7 +28,7 @@ var gameApi = (function () {
 
         app.post('/api/game/add', function (req, res) {
             
-            DalGame.addGame(req.body.name, function (err, game) {
+            DalGame.addGame(req.body.name, req.body.admin, function (err, game) {
                 
                 if (err)
                     res.send(err);
