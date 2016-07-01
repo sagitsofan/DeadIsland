@@ -92,45 +92,44 @@
 
         $scope.dealHands = function (game) {
             console.log(game);
-            $scope.win = false;
             $scope.game = game;
-            $scope.ComunityCards = [];
-            $scope.myCards = [];
+            // $scope.ComunityCards = [];
+            // $scope.myCards = [];
             
-            //print community cards
-            angular.forEach(game.community, function (community) {
-                $scope.ComunityCards.push(
-                    {
-                        suit: $Cards.translateCardSuit(community),
-                        rank: $Cards.translateCardRank(community)
-                    });
-            });
+            // //print community cards
+            // angular.forEach(game.community, function (community) {
+            //     $scope.ComunityCards.push(
+            //         {
+            //             suit: $Cards.translateCardSuit(community),
+            //             rank: $Cards.translateCardRank(community)
+            //         });
+            // });
             
-            //print my hand
-            angular.forEach(game.hands, function (hand, key) {
+            // //print my hand
+            // angular.forEach(game.hands, function (hand, key) {
                 
-                if (hand.name === $Player.get()._id) {
+            //     if (hand.name === $Player.get()._id) {
                     
-                    angular.forEach(hand.hand, function (community) {
-                        $scope.myCards.push(
-                            {
-                                suit: $Cards.translateCardSuit(community),
-                                rank: $Cards.translateCardRank(community)
-                            });
-                    });
-                }
-            });
+            //         angular.forEach(hand.hand, function (community) {
+            //             $scope.myCards.push(
+            //                 {
+            //                     suit: $Cards.translateCardSuit(community),
+            //                     rank: $Cards.translateCardRank(community)
+            //                 });
+            //         });
+            //     }
+            // });
             
             //get my myChances
-            if (game.eval != undefined) {
-                $scope.myChances = parseInt(game.eval[$Player.get()._id] * 100, 0);
+            // if (game.eval != undefined) {
+            //     $scope.myChances = parseInt(game.eval[$Player.get()._id] * 100, 0);
                 
-                //check if current player won the game
-                if (game.eval[$Player.get()._id] === 1) {
-                    $scope.win = true;
-                    socket.emit('PlayerWonGame', $routeParams.gameId, $Player.get());
-                }
-            }
+            //     //check if current player won the game
+            //     if (game.eval[$Player.get()._id] === 1) {
+            //         $scope.win = true;
+            //         socket.emit('PlayerWonGame', $routeParams.gameId, $Player.get());
+            //     }
+            // }
             
             $scope.$apply();
         }
