@@ -14,6 +14,17 @@ var playerApi = (function () {
                 res.send(player);
             });
         });
+
+        app.post('/api/player/signup', function (req, res) {
+            
+            DalPlayer.signup(req.body.username, req.body.password, req.body.fullname, function (err, player) {
+                
+                if (err)
+                    res.send(err);
+                
+                res.send(player);
+            });
+        });
     }
     
     return {

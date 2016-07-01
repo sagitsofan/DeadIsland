@@ -2,7 +2,10 @@
 var Schema = mongoose.Schema;
 
 var PlayersSchema = new Schema( {
-    text : String
+    text : String,
+    username : String,
+    password : String,
+    fullname : String
 });
 
 module.exports = mongoose.model('players', PlayersSchema);

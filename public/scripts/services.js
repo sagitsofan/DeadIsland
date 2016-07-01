@@ -10,6 +10,14 @@
             });
         }
         
+        data.signup = function (player) {
+            return $http.post('/api/player/signup', {
+                username: player.username,
+                password: player.password,
+                fullname: player.fullname
+            });
+        }
+
         data.getGames = function () {
             return $http.get('/api/game/getgames');
         }

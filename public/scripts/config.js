@@ -4,6 +4,7 @@ mainApp.config(['$routeProvider', function ($routeProvider) {
         
         $routeProvider.
                     when('/login', { templateUrl: '/views/login.html' }).
+                    when('/signup', { templateUrl: '/views/signup.html' }).
                     when('/dashboard', { templateUrl: '/views/dashboard.html' }).
                     when('/game/:gameId', { templateUrl: '/views/game.html' }).
                     otherwise({ redirectTo: '/login' });

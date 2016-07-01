@@ -40,6 +40,7 @@
     <Compile Include="node\model\player.js" />
     <Compile Include="node\model\game.js" />
     <Compile Include="public\scripts\controllers\gameController.js" />
+    <Compile Include="public\scripts\controllers\signupController.js" />
     <Compile Include="public\scripts\lib\underscore-min.js" />
     <Compile Include="public\scripts\services.js" />
     <Compile Include="public\scripts\config.js" />
@@ -184,6 +185,7 @@
     <Content Include="public\index.html" />
     <Content Include="public\views\dashboard.html" />
     <Content Include="public\views\game.html" />
+    <Content Include="public\views\signup.html" />
     <Content Include="public\views\login.html" />
   </ItemGroup>
   <ItemGroup>
