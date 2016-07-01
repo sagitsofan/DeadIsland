@@ -1,5 +1,5 @@
 ﻿{
     "mongodb": { "host": "mongodb://deadisland:1q2w3e4r@ds019624.mlab.com:19624/heroku_0vtnjkf7" },
     "port": 1442,
-    "env": "prod"
-}
+    "env": "dev"
+} 
