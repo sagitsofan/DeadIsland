@@ -2,8 +2,7 @@
 
 var cfg = {
     "handMax": 7,
-    "handsMax": 4,
-    
+    "handsMax": 8,
     "playerCards": 2,
     "communityCards": 5,
     

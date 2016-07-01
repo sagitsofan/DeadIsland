@@ -84,7 +84,6 @@
             if ($scope.game){
                 if ($scope.game.eval){
                     return ($scope.game.eval[player._id] === 1) 
-
                 }
             }
 

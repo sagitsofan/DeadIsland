@@ -22,17 +22,12 @@
 
     <div class="pokerTable">
       <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id,'adminSeat':player._id == currentGame.admin}">
-        
         <div ng-show="player._id === currentPlayer._id">You ({{player.username}})</div>
         <div ng-show ="player._id != currentPlayer._id">{{player.username}}</div>
-        
-
-        
         <div style="" class="">
           <img ng-repeat="card in getPlayerHand(player)" ng-src="/images/cards/svg/{{card | lowercase}}.svg" class="playerCard" />
         </div>
         <div ng-show="isPlayerWinner(player)" style="color:lime;">Winner</div>
-      
       </div>
     </div>
 
