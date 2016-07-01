@@ -1,5 +1,7 @@
-﻿mainApp.controller('dashboardController', ['$scope', '$http', '$location', 'DataModel', function ($scope, $http, $location, DataModel) {
+﻿mainApp.controller('dashboardController', ['$scope', '$http', '$location', '$Player', 'DataModel', function ($scope, $http, $location, $Player, DataModel) {
         
+        $scope.currentPlayer = $Player.get();
+
         $scope.init = function () {
             $scope.isGamesLoading = true;
 
@@ -23,6 +25,9 @@
         $scope.createGame = function (game) {
             
             if (game != undefined && game.name != "") {
+                
+                game.admin = $Player.get()._id;
+
                 DataModel.addGame(game).success(function (data) {
                     $scope.game = null;
                     $scope.init();

@@ -7,7 +7,7 @@
          <div ng-repeat="game in games">
              <p>
                  <a style="cursor:pointer;" ng-click="joinGame(game)">{{game.name}}</a>
-                 <a style="cursor:pointer;" ng-click="deleteGame(game)"><b>X</b></a>
+                 <a style="cursor:pointer;" ng-show="currentPlayer._id === game.admin" ng-click="deleteGame(game)"><b>X</b></a>
              </p>
              
              <u ng-show="game.players.length > 0">Active players:</u>
