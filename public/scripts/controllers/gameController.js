@@ -9,6 +9,8 @@
 
         $scope.init = function () {
             
+            $scope.reloadGame();
+
             socket.emit('PlayerEntersGame', $routeParams.gameId, $Player.get()); //raise event for new player entered game in sever
             
             //catch the new player event entered room from server
@@ -123,7 +125,7 @@
             if (game.eval != undefined) {
                 $scope.myChances = parseInt(game.eval[$Player.get()._id] * 100, 0);
                 
-                //check if player won the game
+                //check if current player won the game
                 if (game.eval[$Player.get()._id] === 1) {
                     $scope.win = true;
                     socket.emit('PlayerWonGame', $routeParams.gameId, $Player.get());
