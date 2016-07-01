@@ -45,7 +45,9 @@
 }
 
 .advantageSeat{
-  border:solid 7px yellow !important;
+border: solid 7px #1e517d !important;
+    background: #0090ff !important;
+    color: white !important;
 }
 
 .winnerSeat{
