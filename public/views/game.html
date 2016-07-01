@@ -9,47 +9,30 @@
 
 
     <div class="pokerTable">
-        <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id}">
-            {{player._id == currentPlayer._id ? "You" : player.username}}
-            <div ng-show="isPlayerWinner(player)" style="color:lime;">Winner</div>
-
-            
-            <div style="position: relative;left: 100%;top: -100%;" class="">
-                <img ng-repeat="card in getPlayerHand(player)" ng-src="/images/cards/png/{{card | lowercase}}.png" class="playerCard" />
-                <!-- <div class="card" style="    width: 5%;height: 10%;position: fixed;"></div> -->
-                <!-- <div class="card" style="    width: 5%;height: 10%;position: fixed;margin-left: -5%;"></div> -->
-            </div>
-
-
-        </div>
+      <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id}">
+        
+        <div>{{player.username}}</div>
         
 
+        
+        <div style="" class="">
+          <img ng-repeat="card in getPlayerHand(player)" ng-src="/images/cards/png/{{card | lowercase}}.png" class="playerCard" />
+        </div>
+        <div ng-show="isPlayerWinner(player)" style="color:lime;">Winner</div>
+      
+      </div>
     </div>
 
 
     <div class="startGame">
-
-<button type="submit" class="btn btn-primary btn-lg " ng-hide="disableStartGameButton || currentGame.players.length == 1" ng-click="startGame()">Start game</button>
-
-<div>
-    <div ng-show="myChances != null && win === false">Your chances are: {{myChances}}%</div>
-
- <div>
+      <button type="submit" class="btn btn-primary btn-lg " ng-hide="disableStartGameButton || currentGame.players.length == 1" ng-click="startGame()">Start game</button>
+      
+      <div>
+        <div ng-show="myChances != null && win === false">Your chances are: {{myChances}}%</div>
+      </div>
+      
+      <div>
         <img ng-repeat="card in game.community" ng-src="/images/cards/png/{{card | lowercase}}.png" class="playerCard" style="width: 20%;" />
-
-        <!-- <div ng-bind-html="getCardHtml(card.rank, card.suit)"></div> -->
+      </div>
     </div>
-</div>
-
-    </div>
-
-
-    
-    <!-- <div ng-repeat="card in myCards">
-        <div ng-bind-html="getCardHtml(card.rank, card.suit)"></div>
-    </div>-->
-
-   
- 
-
 </div>
