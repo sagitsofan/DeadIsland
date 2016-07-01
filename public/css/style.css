@@ -90,7 +90,9 @@
 
 
 
-
+.RTL{
+  direction: rtl;
+}
 
 .White, .White a{
     color:#fff;
@@ -137,7 +139,9 @@
 .shadow{
     box-shadow: 0 0 80px 0 rgba(15, 29, 51, .24);
 }
-
+.Txt11 {
+  font-size: 11px;
+}
 .Txt12 {
   font-size: 12px;
 }

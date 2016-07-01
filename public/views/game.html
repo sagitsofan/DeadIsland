@@ -7,12 +7,16 @@
         </button>
     </div>
     <div style="position: fixed;top: 0px;right: 0px;">
-        <button type="submit" class="btn pull-right"  ng-click="leaveGame()">Leave game</button>
-        <a href="whatsapp://send?text=https://deadisland.herokuapp.com/#/game/{{currentGame._id}}" data-action="share/whatsapp/share">Whatsapp</a>
-
-
-        <h3 style="font-size:9px;">{{currentGame.name}}</h3>
+        <a href="whatsapp://send?text=https://deadisland.herokuapp.com/#/game/{{currentGame._id}}" data-action="share/whatsapp/share">
+          <button type="submit" class="btn pull-left">
+            <span class="glyphicon glyphicon-share" aria-hidden="true"></span> Whatsapp
+          </button>
+        </a>
     </div>
+    <div style="position: fixed;bottom: 0px;right: 0px;">
+        <div class="Txt11 RTL">{{currentGame.name}}</h3>
+    </div>
+
     
 
 
