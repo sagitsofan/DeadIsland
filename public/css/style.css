@@ -29,6 +29,10 @@
   border-radius: 25px;
 }
 
+.playerCard{
+  width: 30px;
+}
+
 .mySeat{
   background: red !important;
 }
