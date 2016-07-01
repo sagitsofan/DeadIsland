@@ -6,8 +6,8 @@
         $scope.init = function () {
             $scope.isGamesLoading = true;
 
-            // DataModel.getGames().success(function (data) {
-            DataModel.getActiveGames().success(function (data) {
+            DataModel.getGames().success(function (data) {
+            // DataModel.getActiveGames().success(function (data) {
                 $scope.games = data;
                 $scope.isGamesLoading = false;
             })
