@@ -24,7 +24,7 @@
 					</div>
 				</td>
 				<td style="width:100px;">
-					<a style="cursor:pointer;" ng-click="deleteGame(game);$event.stopPropagation();"><b>X</b></a>
+                    <a style="cursor:pointer;" ng-show="game.admin === currentPlayer._id" ng-click="deleteGame(game); $event.stopPropagation();"><b>X</b></a>
 				</td>
 			</tr>
 		</table>
