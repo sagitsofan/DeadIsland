@@ -107,8 +107,13 @@
 .Green, .Green a{
   color:#3ab921;
 }
+
 .Red, .Red a{
   color:#f51712;
+}
+
+.Gray, .Gray a{
+  color: #d8d8d8;
 }
 
 
