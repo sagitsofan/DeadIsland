@@ -8,7 +8,7 @@
         $scope.currentPlayer = $Player.get();
         $scope.isGameInProgress = false;
         $scope.winner = null;
-
+        $scope.advantage = "stav";
         $scope.init = function () {
             
             $scope.reloadGame();
@@ -49,9 +49,11 @@
                 $scope.isGameInProgress = false;
                 
                 if ($scope.winner === null){
-                    // $timeout($scope.startGame,2000);
+                    $timeout($scope.startGame,2000);
 
                 }
+
+                // $scope.$apply();
                 
             });
         };
@@ -88,7 +90,12 @@
         $scope.isPlayerWinner = function(player){
             if ($scope.game){
                 if ($scope.game.eval){
-                    return ($scope.game.eval[player._id] === 1) 
+                    if ($scope.game.eval[player._id] === 1){
+                        $scope.advantage = player._id;
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
             }
         }

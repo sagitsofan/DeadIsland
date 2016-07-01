@@ -21,7 +21,7 @@
 
 
     <div class="pokerTable">
-      <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id,'adminSeat':player._id == currentGame.admin,'winnerSeat':winner==player._id}">
+      <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id,'adminSeat':player._id == currentGame.admin,'advantageSeat':advantage==player._id,'winnerSeat':winner==player._id}">
         <div ng-show="player._id === currentPlayer._id">{{player.username}}</div>
         <div ng-show ="player._id != currentPlayer._id">{{player.username}}</div>
         <div style="" class="">
@@ -33,7 +33,7 @@
 
 
     <div class="startGame">
-        <button type="submit" class="btn btn-primary btn-lg" ng-if="currentPlayer._id == currentGame.admin" ng-hide="isGameInProgress" ng-click="startGame()">Start game</button>
+        <button type="submit" class="btn btn-primary btn-lg" style="position:fixed;top: 40%;left: 40%;" ng-if="currentPlayer._id == currentGame.admin" ng-hide="isGameInProgress" ng-click="startGame()">Start game</button>
       
       <div>
         <div ng-show="myChances != null && win === false">Your chances are: {{myChances}}%</div>
