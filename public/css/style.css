@@ -21,12 +21,14 @@
 }
 
 .pokerTable .seat{
-  border:solid 4px #000;
-  background: yellow;
+  border:solid 4px #3f2b2b;
+  background: #762222;
   border-radius: 25px;
     width: 15%;
     height: 15%;
   position: fixed;
+  color:#fff;
+  font-size:16px;
   
 }
 
@@ -35,12 +37,18 @@
 }
 
 .mySeat{
-  background: red !important;
+  background: #cfa62d !important;
 }
 
 .adminSeat{
-  background: orange !important;
+  color:#cf2d2d!important;
 }
+
+.winnerSeat{
+  border:solid 5px blue !important;
+  background: blue !important;
+}
+
 
 .seat1{
   top: 5%;
@@ -63,17 +71,17 @@
 }
 
 .seat5{
-  top: 80%;
+      top: 69%;
   left: 66%;
 }
 
 .seat6{
-  top: 80%;
+    top: 69%;
   left: 43%;
 }
 
 .seat7{
-  top: 80%;
+    top: 69%;
   left: 20%;
 }
 
