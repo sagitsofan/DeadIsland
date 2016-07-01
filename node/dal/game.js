@@ -46,6 +46,19 @@ var gameDal = (function () {
             return callback(err, "sucsess");
         });
     }
+    
+    function _addGameHistory(_gameId, _history, callback) {
+
+        Game.findOne({ _id: _gameId }, function (err, game) {
+            
+            game.history.push(_history);
+
+            game.save(function (err) {
+                
+                return callback(err, game);
+            });
+        });
+    }
 
     function _attachPlayerToGame(_gameId, _playerId, callback) {
         
@@ -89,6 +102,7 @@ var gameDal = (function () {
         getGames: _getGames,
         addGame: _addGame,
         deleteGame: _deleteGame,
+        addGameHistory: _addGameHistory,
         attachPlayerToGame: _attachPlayerToGame,
         dettachPlayerToGame: _dettachPlayerToGame,
         setPlayerWon: _setPlayerWon

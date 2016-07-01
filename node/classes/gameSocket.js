@@ -109,12 +109,20 @@ var gameSocket = (function () {
                     //eval and print
                     game.evalHands().printGame();
                     
+                    //send to all players river cards
                     io.sockets.in(gameId).emit('River', game.getGame());
                     
                     console.log("================================= STATS  ==================================");
                     
-                    //at any time you can return the JSON of the game status
-                    console.log(game.getGame());
+                    var history = game.getGame();
+                    
+                    //print game history
+                    console.log(history);
+                    
+                    history.timestamp = new Date().getTime();
+                    DalGame.addGameHistory(gameId, history, function (err, game) {
+
+                    });
 
                     io.sockets.in(gameId).emit('GameEnded');
                 }, 7000)

@@ -7,7 +7,8 @@ var GameSchema = new Schema( {
     active : Boolean,
     admin : mongoose.Schema.Types.ObjectId,
     lastplayerwon : mongoose.Schema.Types.ObjectId,
-    players: [{ type: mongoose.Schema.Types.ObjectId, ref: 'players' }]
+    players: [{ type: mongoose.Schema.Types.ObjectId, ref: 'players' }],
+    history : [Schema.Types.Mixed]
 });
 
 module.exports = mongoose.model('games', GameSchema);
