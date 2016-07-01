@@ -83,7 +83,94 @@
 
 /*dashboard page*/
 .gameListItem{
-    padding: 20px;
+        padding: 10px 0px;
     border: solid 1px #ececec;
     margin-bottom: -1px;
 }
+
+
+
+
+
+.White, .White a{
+    color:#fff;
+}
+
+.Blue, .Blue a{
+    color:#006caa;
+}
+
+.Orange, .Orange a{
+    color:#ff6300 !important;
+}
+
+.Green, .Green a{
+  color:#3ab921;
+}
+.Red, .Red a{
+  color:#f51712;
+}
+
+
+.Underline{
+    text-decoration:underline;
+}
+
+.Bold{
+    font-weight:bold;
+}
+.Bold500{
+    font-weight:500;
+}
+.Bold600{
+    font-weight:600;
+}
+.Bold900{
+    font-weight:900;
+}
+
+.shadow{
+    box-shadow: 0 0 80px 0 rgba(15, 29, 51, .24);
+}
+
+.Txt12 {
+  font-size: 12px;
+}
+.Txt13 {
+  font-size: 13px;
+}
+.Txt15 {
+  font-size: 15px;
+}
+.Txt16 {
+  font-size: 16px;
+}
+.Txt17 {
+  font-size: 17px;
+}
+.Txt19 {
+  font-size: 19px;
+}
+.Txt21 {
+  font-size: 21px;
+}
+.Txt23 {
+  font-size: 23px;
+}
+.Txt27 {
+  font-size: 27px;
+}
+.Txt28 {
+  font-size: 28px;
+}
+.Txt30 {
+  font-size: 30px;
+}
+.Txt40 {
+  font-size: 40px;
+}
+.Txt57 {
+  font-size: 57px;
+}
+
+

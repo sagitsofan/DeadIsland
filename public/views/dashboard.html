@@ -6,16 +6,29 @@
 
 
 
-	<div ng-repeat="game in games" ng-click="joinGame(game._id);" class="gameListItem row" >
-        <div class="col-xs-6" style="text-align:left;">
-        	{{game.name}}
-        	<a style="cursor:pointer;" ng-click="deleteGame(game)"><b>X</b></a>
-        </div>
-        <div class="col-xs-6">{{game.players.length}}
-        	<div ng-repeat="player in game.players">
-        		{{player.username}}
-            </div>
-        </div>
+	<div ng-repeat="game in games" ng-click="joinGame(game._id);" class="gameListItem row">
+
+		<table style="width:100%;">
+			<tr>
+				<td style="width:100px;">
+					<div class="Bold Txt40">{{game.players.length}}</div>
+					<div style="position: relative;top: -11px;">Players</div>
+				</td>
+				<td style="text-align:left;">
+					<div class="Txt23">{{game.name}}</div>
+					<div>
+						|
+						<span ng-repeat="player in game.players">
+							{{player.username}} |
+						</span>
+					</div>
+				</td>
+				<td style="width:100px;">
+					<a style="cursor:pointer;" ng-click="deleteGame(game)"><b>X</b></a>
+				</td>
+			</tr>
+		</table>
+
     </div>
 
      <img ng-show="isGamesLoading" src="/images/loader.gif" />
