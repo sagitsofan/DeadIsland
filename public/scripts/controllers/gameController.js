@@ -1,12 +1,15 @@
-﻿mainApp.controller('gameController', ['$scope', '$http', '$location', '$window', '$routeParams', 'DataModel', '$Player', '$Cards', function ($scope, $http, $location, $window, $routeParams, DataModel, $Player, $Cards) {
+﻿mainApp.controller('gameController', ['$scope', '$http','$timeout', '$location', '$window', '$routeParams', 'DataModel', '$Player', '$Cards', 
+    function ($scope, $http, $timeout, $location, $window, $routeParams, DataModel, $Player, $Cards) {
         
         var socket = io();
         $scope.ComunityCards = [];
         $scope.myCards = [];
         $scope.win = false;
-        $scope.disableStartGameButton = false;
         $scope.currentPlayer = $Player.get();
-
+        $scope.isGameInProgress = false;
+        $scope.winner = null;
+        $scope.gameWinners = [];
+        $scope.advantage = "stav";
         $scope.init = function () {
             
             $scope.reloadGame();
@@ -40,17 +43,51 @@
             });
 
             socket.on('GameStarted', function (game) {
-                $scope.disableStartGameButton = true;
+                $scope.isGameInProgress = true;
+                
             });
 
             socket.on('GameEnded', function (game) {
-                $scope.disableStartGameButton = false;
+                $scope.updateWinners();
+                $scope.isGameInProgress = false;
+                
+                if ($scope.gameWinners.length > 1){
+                    //split
+                    $scope.advantage = null;
+                    $timeout($scope.startGame,3000);
+
+                } else if ($scope.gameWinners.length === 1) {
+                    
+                    if ($scope.advantage === $scope.gameWinners[0]){
+                        //second point, the winner!
+                        $scope.advantage = null;
+                        $scope.winner = $scope.gameWinners[0];
+                    } else {
+                        //we have one winner - set advantage
+                        $scope.advantage = $scope.gameWinners[0];
+                        if ($scope.isAdmin($scope.currentPlayer)){
+                            $timeout($scope.startGame,2000);
+                        }
+                    }
+
+                }
+
+
+
+
+
                 $scope.$apply();
+                
             });
         };
         
-        $scope.reloadGame = function () {
+        $scope.isAdmin = function(player){
+            if (player){
+                return player._id === $scope.currentGame.admin;
+            }
+        }
 
+        $scope.reloadGame = function () {
             DataModel.getGame($routeParams.gameId).success(function (data) {
                 $scope.currentGame = data;
             })
@@ -62,6 +99,8 @@
         }
         
         $scope.startGame = function () {
+            $scope.gameWinners = [];
+            $scope.winner = null;
             socket.emit('StartGame', $routeParams.gameId); //raise event for player start game in sever
         }
         
@@ -72,66 +111,42 @@
         $scope.getPlayerHand = function(player){
             if ($scope.game){
                 var x = _.where($scope.game.hands,{"name":player._id});
-                console.log(x);
                 if (x && x.length > 0 && x[0].hand){
                     return x[0].hand;
                 }
             }
-
         }
+
+
+
+        $scope.updateWinners = function(player){
+
+            _.each($scope.game.eval,function(val,key){
+                if (val === 1){
+                    $scope.gameWinners.push(key);
+                }
+            });
+            console.log($scope.gameWinners);
+        }
+
+
 
         $scope.isPlayerWinner = function(player){
             if ($scope.game){
-                if ($scope.game.eval){
-                    return ($scope.game.eval[player._id] === 1) 
-
+                if ($scope.game.eval){ 
+                    if ($scope.game.eval[player._id] === 1){
+                        return true;
+                    } else {
+                        return false;
+                    }                
+                    
                 }
             }
-
         }
 
         $scope.dealHands = function (game) {
             console.log(game);
-            $scope.win = false;
             $scope.game = game;
-            $scope.ComunityCards = [];
-            $scope.myCards = [];
-            
-            //print community cards
-            angular.forEach(game.community, function (community) {
-                $scope.ComunityCards.push(
-                    {
-                        suit: $Cards.translateCardSuit(community),
-                        rank: $Cards.translateCardRank(community)
-                    });
-            });
-            
-            //print my hand
-            angular.forEach(game.hands, function (hand, key) {
-                
-                if (hand.name === $Player.get()._id) {
-                    
-                    angular.forEach(hand.hand, function (community) {
-                        $scope.myCards.push(
-                            {
-                                suit: $Cards.translateCardSuit(community),
-                                rank: $Cards.translateCardRank(community)
-                            });
-                    });
-                }
-            });
-            
-            //get my myChances
-            if (game.eval != undefined) {
-                $scope.myChances = parseInt(game.eval[$Player.get()._id] * 100, 0);
-                
-                //check if current player won the game
-                if (game.eval[$Player.get()._id] === 1) {
-                    $scope.win = true;
-                    socket.emit('PlayerWonGame', $routeParams.gameId, $Player.get());
-                }
-            }
-            
             $scope.$apply();
         }
         
