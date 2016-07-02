@@ -3,7 +3,7 @@
         $scope.formData = {};
         
         $scope.signup = function () {
-        
+            
             DataModel.signup($scope.formData).success(function (data) {
         
                 if (data != null) {
@@ -17,9 +17,3 @@
             })
         };
     }]);
-
-
-
-
-
-
