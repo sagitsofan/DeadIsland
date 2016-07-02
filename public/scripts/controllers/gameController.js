@@ -2,8 +2,6 @@
     function ($scope, $http, $timeout, $location, $window, $routeParams, DataModel, $Player, $Cards) {
         
         var socket = io();
-        $scope.ComunityCards = [];
-        $scope.myCards = [];
         $scope.win = false;
         $scope.currentPlayer = $Player.get();
         $scope.isGameInProgress = false;
@@ -54,7 +52,7 @@
                 if ($scope.gameWinners.length > 1){
                     //split
                     $scope.advantage = null;
-                    $timeout($scope.startGame,3000);
+                    //$timeout($scope.startGame,3000);
 
                 } else if ($scope.gameWinners.length === 1) {
                     
@@ -66,7 +64,7 @@
                         //we have one winner - set advantage
                         $scope.advantage = $scope.gameWinners[0];
                         if ($scope.isAdmin($scope.currentPlayer)){
-                            $timeout($scope.startGame,2000);
+                            //$timeout($scope.startGame,2000);
                         }
                     }
 
@@ -104,10 +102,6 @@
             socket.emit('StartGame', $routeParams.gameId); //raise event for player start game in sever
         }
         
-        $scope.getCardHtml = function (rank, suit) {
-            return $Cards.ranks[rank].template.replace(/{{suit}}/g, suit).replace(/{{symbol}}/g, $Cards.suits[suit].symbol);
-        }
-
         $scope.getPlayerHand = function(player){
             if ($scope.game){
                 var x = _.where($scope.game.hands,{"name":player._id});
@@ -118,12 +112,11 @@
         }
 
         $scope.getPlayerBet = function(player){
-            if ($scope.game){
+            if ($scope.game && player && $scope.game.eval){
                 var num = $scope.game.eval[player._id];
-                return parseInt(num * 100, 0);
+                return parseInt(num * 100, 0) + "%";
             }
         }
-
 
         $scope.updateWinners = function(player){
 
@@ -134,8 +127,6 @@
             });
             console.log($scope.gameWinners);
         }
-
-
 
         $scope.isPlayerWinner = function(player){
             if ($scope.game){
@@ -151,7 +142,6 @@
         }
 
         $scope.dealHands = function (game) {
-            console.log(game);
             $scope.game = game;
             $scope.$apply();
         }

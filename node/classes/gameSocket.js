@@ -58,7 +58,7 @@ var gameSocket = (function () {
                         game.dealCard().dealCard();
                         
                         //call evalHands() to process win percentages using the current state of the game
-                        game.evalHands()
+                        //game.evalHands() // STAV: DO NOT REMOVE COMMENT PLEASE - ITS TAKES A LOT OF TIME WHEN THERE IS 5+ PLAYERS (!!)
                         
                         io.sockets.in(gameId).emit('DealHands', game.getGame());
                     });
