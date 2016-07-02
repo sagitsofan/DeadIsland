@@ -67,65 +67,84 @@ var gameSocket = (function () {
                         
                         io.sockets.in(gameId).emit('DealHands', game.getGame());
                     });
-                    
-                }, 1000)
+
+
+
+                    //flop
+                    setTimeout(function () {
+                        
+                        //console.log("=============================== FLOP ====================================");
+
+                        //flop (3 cards)
+                        game.communityCard().communityCard().communityCard();
+                        
+                        //eval and print
+                        game.evalHands()
+                        
+                        io.sockets.in(gameId).emit('Flop', game.getGame());
+
+
+
+
+                        //turn
+                        setTimeout(function () {
+                            
+                            //console.log("================================ TURN ===================================");
+
+                            //turn
+                            game.communityCard();
+                            
+                            //eval and print
+                            game.evalHands();
+                            
+                            io.sockets.in(gameId).emit('Turn', game.getGame());
+
+
+                            //river
+                            setTimeout(function () {
+                                
+                                //console.log("================================ RIVER  ===================================");
+
+                                //river
+                                game.communityCard();
+                                
+                                //eval and print
+                                game.evalHands().printGame();
+                                
+                                //send to all players river cards
+                                io.sockets.in(gameId).emit('River', game.getGame());
+                                
+                                //console.log("================================= STATS  ==================================");
+                                
+                                var history = game.getGame();
+                                
+                                //print game history
+                                //console.log(history);
+                                
+                                history.timestamp = new Date().getTime();
+                                    DalGame.addGameHistory(gameId, history, function (err, game) {
+                                });
+
+
+                                setTimeout(function () {
+                                    io.sockets.in(gameId).emit('GameEnded');
+                                },1000);
+
+                                
+
+
+
+
+                            }, 3000)
+                        }, 2000)
+                    }, 5000)
+                }, 10)
                 
-                //flop
-                setTimeout(function () {
-                    
-                    //console.log("=============================== FLOP ====================================");
-
-                    //flop (3 cards)
-                    game.communityCard().communityCard().communityCard();
-                    
-                    //eval and print
-                    game.evalHands().printGame();
-                    
-                    io.sockets.in(gameId).emit('Flop', game.getGame());
-                }, 3000)
                 
-                //turn
-                setTimeout(function () {
-                    
-                    //console.log("================================ TURN ===================================");
-
-                    //turn
-                    game.communityCard();
-                    
-                    //eval and print
-                    game.evalHands().printGame();
-                    
-                    io.sockets.in(gameId).emit('Turn', game.getGame());
-                }, 5000)
                 
-                //river
-                setTimeout(function () {
-                    
-                    //console.log("================================ RIVER  ===================================");
-
-                    //river
-                    game.communityCard();
-                    
-                    //eval and print
-                    game.evalHands().printGame();
-                    
-                    //send to all players river cards
-                    io.sockets.in(gameId).emit('River', game.getGame());
-                    
-                    //console.log("================================= STATS  ==================================");
-                    
-                    var history = game.getGame();
-                    
-                    //print game history
-                    //console.log(history);
-                    
-                    history.timestamp = new Date().getTime();
-                    DalGame.addGameHistory(gameId, history, function (err, game) {
-
-                    });
-
-                    io.sockets.in(gameId).emit('GameEnded');
-                }, 7000)
+                
+                
+                
             });
         });
     }
