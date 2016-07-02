@@ -24,7 +24,7 @@ var gameDal = (function () {
     
     function _addGame(_name, _admin, callback) {
         
-        var game = new Game({ name: _name, admin: _admin, active: true });
+        var game = new Game({ name: _name, admin: _admin, active: true, createdDate: new Date() });
         
         game.save(function (err) {
 
