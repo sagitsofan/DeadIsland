@@ -1,12 +1,12 @@
 ﻿
 
 .startGame{
-      position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 40%;
-    margin-left: -20%;
-    margin-top: -3%;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  width: 40%;
+  margin-left: -20%;
+  margin-top: -3%;
 }
 
 .pokerTable{
@@ -45,14 +45,19 @@
 }
 
 .advantageSeat{
-border: solid 7px #1e517d !important;
+border: solid 5px #1e517d !important;
     background: #0090ff !important;
     color: white !important;
 }
 
 .winnerSeat{
-  border:solid 5px blue !important;
-  background: blue !important;
+  border: solid 5px #762222 !important;
+  background: #ffe500 !important;
+  color: #762222 !important;
+}
+
+.loserSeat{
+  opacity:0.3;
 }
 
 
