@@ -47,7 +47,7 @@ var gameSocket = (function () {
                 //deal hands
                 setTimeout(function () {
                     
-                    console.log("=============================== HANDS ====================================");
+                    //console.log("=============================== HANDS ====================================");
 
                     //add "Hands" or players
                     DalGame.getGame(gameId, function (err, g) {
@@ -63,7 +63,7 @@ var gameSocket = (function () {
                         //game.evalHands()
                         
                         //output the status of the game to the console
-                        game.printGame();
+                        //game.printGame();
                         
                         io.sockets.in(gameId).emit('DealHands', game.getGame());
                     });
@@ -73,13 +73,13 @@ var gameSocket = (function () {
                 //flop
                 setTimeout(function () {
                     
-                    console.log("=============================== FLOP ====================================");
+                    //console.log("=============================== FLOP ====================================");
 
                     //flop (3 cards)
                     game.communityCard().communityCard().communityCard();
                     
                     //eval and print
-                    game.evalHands().printGame();
+                    //game.evalHands().printGame();
                     
                     io.sockets.in(gameId).emit('Flop', game.getGame());
                 }, 3000)
@@ -87,13 +87,13 @@ var gameSocket = (function () {
                 //turn
                 setTimeout(function () {
                     
-                    console.log("================================ TURN ===================================");
+                    //console.log("================================ TURN ===================================");
 
                     //turn
                     game.communityCard();
                     
                     //eval and print
-                    game.evalHands().printGame();
+                    //game.evalHands().printGame();
                     
                     io.sockets.in(gameId).emit('Turn', game.getGame());
                 }, 5000)
@@ -101,23 +101,23 @@ var gameSocket = (function () {
                 //river
                 setTimeout(function () {
                     
-                    console.log("================================ RIVER  ===================================");
+                    //console.log("================================ RIVER  ===================================");
 
                     //river
                     game.communityCard();
                     
                     //eval and print
-                    game.evalHands().printGame();
+                    //game.evalHands().printGame();
                     
                     //send to all players river cards
                     io.sockets.in(gameId).emit('River', game.getGame());
                     
-                    console.log("================================= STATS  ==================================");
+                    //console.log("================================= STATS  ==================================");
                     
                     var history = game.getGame();
                     
                     //print game history
-                    console.log(history);
+                    //console.log(history);
                     
                     history.timestamp = new Date().getTime();
                     DalGame.addGameHistory(gameId, history, function (err, game) {
