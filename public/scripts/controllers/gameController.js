@@ -117,6 +117,12 @@
             }
         }
 
+        $scope.getPlayerBet = function(player){
+            if ($scope.game){
+                var num = $scope.game.eval[player._id];
+                return parseInt(num * 100, 0);
+            }
+        }
 
 
         $scope.updateWinners = function(player){

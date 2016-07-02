@@ -60,7 +60,7 @@ var gameSocket = (function () {
                         game.dealCard().dealCard();
                         
                         //call evalHands() to process win percentages using the current state of the game
-                        //game.evalHands()
+                        game.evalHands()
                         
                         //output the status of the game to the console
                         //game.printGame();
@@ -79,7 +79,7 @@ var gameSocket = (function () {
                     game.communityCard().communityCard().communityCard();
                     
                     //eval and print
-                    //game.evalHands().printGame();
+                    game.evalHands().printGame();
                     
                     io.sockets.in(gameId).emit('Flop', game.getGame());
                 }, 3000)
@@ -93,7 +93,7 @@ var gameSocket = (function () {
                     game.communityCard();
                     
                     //eval and print
-                    //game.evalHands().printGame();
+                    game.evalHands().printGame();
                     
                     io.sockets.in(gameId).emit('Turn', game.getGame());
                 }, 5000)

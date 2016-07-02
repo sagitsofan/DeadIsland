@@ -32,6 +32,7 @@
           <img ng-repeat="card in getPlayerHand(player)" ng-src="/images/cards/png-sm/{{card | lowercase}}.png" class="playerCard" />
         </div>
         <div ng-show="isPlayerWinner(player)" style="color:lime;">Winner</div>
+        <div ng-show="isGameInProgress" class="Txt13 Gray">{{getPlayerBet(player)}}%</div>
       </div>
     </div>
 
