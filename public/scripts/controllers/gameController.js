@@ -44,6 +44,7 @@
 
             socket.on('GameStarted', function (game) {
                 $scope.isGameInProgress = true;
+                //comment
                 
             });
 
