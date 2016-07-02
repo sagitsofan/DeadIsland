@@ -21,11 +21,15 @@
 
 
     <div class="pokerTable">
-      <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id,'adminSeat':isAdmin(player),'advantageSeat':advantage==player._id,'winnerSeat':winner==player._id,'loserSeat': winner !== null && winner !== player._id}">
-        <div ng-show="player._id === currentPlayer._id">{{player.username}}</div>
-        <div ng-show ="player._id != currentPlayer._id">{{player.username}}</div>
+      <div ng-repeat="player in currentGame.players track by $index" class="seat seat{{$index+1}}" ng-class="{'mySeat':player._id == currentPlayer._id,'advantageSeat':advantage==player._id,'winnerSeat':winner==player._id,'loserSeat': winner !== null && winner !== player._id}">
+        
+        <div>
+          <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size:10px;" ng-show="isAdmin(player)"></span>
+          {{player.username}}
+        </div>
+
         <div style="" class="">
-          <img ng-repeat="card in getPlayerHand(player)" ng-src="/images/cards/svg/{{card | lowercase}}.svg" class="playerCard" />
+          <img ng-repeat="card in getPlayerHand(player)" ng-src="/images/cards/png-sm/{{card | lowercase}}.png" class="playerCard" />
         </div>
         <div ng-show="isPlayerWinner(player)" style="color:lime;">Winner</div>
       </div>
@@ -40,7 +44,7 @@
       </div>
       
       <div>
-        <img ng-repeat="card in game.community" ng-src="/images/cards/svg/{{card | lowercase}}.svg" class="playerCard" style="width: 20%;" />
+        <img ng-repeat="card in game.community" ng-src="/images/cards/png-sm/{{card | lowercase}}.png" class="playerCard" style="width: 20%;" />
       </div>
     </div>
 </div>
