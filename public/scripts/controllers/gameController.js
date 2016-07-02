@@ -8,6 +8,8 @@
         $scope.winner = null;
         $scope.gameWinners = [];
         $scope.advantage = "stav";
+        $scope.chatStack = "";
+
         $scope.init = function () {
             
             $scope.reloadGame();
@@ -76,6 +78,11 @@
 
                 $scope.$apply();
                 
+            });
+
+            socket.on('ChatWatchDog', function (from, message) {
+                $scope.chatStack += from.username + ":" + message + "<br>";
+                $scope.$apply();
             });
         };
         
@@ -148,5 +155,10 @@
         
         $window.onbeforeunload = $scope.leaveGame;
         
+        $scope.sendChatMessage = function () {
+            socket.emit('PlayerSendChatMessage', $routeParams.gameId, $scope.currentPlayer, $scope.chatMessage);
+            $scope.chatMessage = null;
+        }
+
         $scope.init();
     }]);

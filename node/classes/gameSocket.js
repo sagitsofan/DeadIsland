@@ -109,6 +109,10 @@ var gameSocket = (function () {
                     }, 5000)
                 }, 10)
             });
+
+            socket.on('PlayerSendChatMessage', function (gameId, player, message) {
+                io.sockets.in(gameId).emit('ChatWatchDog', player, message);
+            });
         });
     }
     

@@ -1,5 +1,9 @@
-﻿mainApp.controller('baseController', ['$scope', '$rootScope', '$location', '$Player', function ($scope, $rootScope, $location, $Player) {
+﻿mainApp.controller('baseController', ['$scope', '$sce', '$rootScope', '$location', '$Player', function ($scope, $sce, $rootScope, $location, $Player) {
         
+        $rootScope.$on("LoginOccured", function (event) {
+            $scope.init();
+        });
+
         $scope.init = function () {
             
             if ($Player.get() == null) {
@@ -12,13 +16,13 @@
             }
         };
 
-        $rootScope.$on("LoginOccured", function (event) {
-            $scope.init();
-        });
-
         $scope.logout = function () {
             $Player.logout();
         };
+        
+        $scope.trustedHtml = function (plainText) {
+            return $sce.trustAsHtml(plainText);
+        }
         
         $scope.init();
     }]);
