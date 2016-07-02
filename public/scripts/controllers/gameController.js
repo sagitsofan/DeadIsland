@@ -2,7 +2,6 @@
     function ($scope, $http, $timeout, $location, $window, $routeParams, DataModel, $Player, $Cards) {
         
         var socket = io();
-        $scope.win = false;
         $scope.currentPlayer = $Player.get();
         $scope.isGameInProgress = false;
         $scope.winner = null;
