@@ -153,8 +153,10 @@
         }
         
         $scope.sendChatMessage = function () {
-            socket.emit('PlayerSendChatMessage', $routeParams.gameId, $scope.currentPlayer, $scope.chatMessage);
-            $scope.chatMessage = null;
+            if ($scope.chatMessage != null) {
+                socket.emit('PlayerSendChatMessage', $routeParams.gameId, $scope.currentPlayer, $scope.chatMessage);
+                $scope.chatMessage = null;
+            }
         }
 
         $window.onbeforeunload = $scope.leaveGame;
