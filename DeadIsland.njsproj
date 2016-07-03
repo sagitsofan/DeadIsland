@@ -34,9 +34,11 @@
     <Compile Include="node\api\players.js" />
     <Compile Include="node\classes\gameSocket.js" />
     <Compile Include="node\classes\config.js" />
+    <Compile Include="node\dal\chat.js" />
     <Compile Include="node\dal\player.js" />
     <Compile Include="node\dal\game.js" />
     <Compile Include="node\lib\poker-sim.js" />
+    <Compile Include="node\model\chat.js" />
     <Compile Include="node\model\player.js" />
     <Compile Include="node\model\game.js" />
     <Compile Include="public\scripts\controllers\gameController.js" />

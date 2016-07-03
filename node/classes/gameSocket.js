@@ -1,5 +1,6 @@
 ﻿var pokerSim = require("../lib/poker-sim.js");
 var DalGame = require("../dal/game.js");
+var DalChat = require("../dal/chat.js");
 
 var gameSocket = (function () {
     
@@ -111,6 +112,8 @@ var gameSocket = (function () {
             });
 
             socket.on('PlayerSendChatMessage', function (gameId, player, message) {
+                
+                DalChat.saveChat(gameId, player._id, message, function (err, state) { });
                 io.sockets.in(gameId).emit('ChatWatchDog', player, message);
             });
         });
