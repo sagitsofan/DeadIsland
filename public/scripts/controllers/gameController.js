@@ -8,7 +8,7 @@
         $scope.gameWinners = [];
         $scope.advantage = "stav";
         $scope.chatStack = "";
-
+        
         $scope.init = function () {
             
             $scope.reloadGame();
