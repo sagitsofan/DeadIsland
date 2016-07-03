@@ -22,7 +22,6 @@
             
             //catch the new player event entered room from server
             socket.on('NewPlayerLeftGame', function (player) {
-                alert("NewPlayerLeftGame");
                 $scope.reloadGame();
             });
             
@@ -85,9 +84,9 @@
                 $scope.$apply();
             });
 
-            socket.on('disconnect', function () {
-                socket.emit('PlayerLeftGame', $routeParams.gameId, $Player.get());
-            });
+            //socket.on('disconnect', function () {
+                //socket.emit('PlayerLeftGame', $routeParams.gameId, $Player.get());
+            //});
         };
         
         $scope.isAdmin = function(player){
