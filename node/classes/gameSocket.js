@@ -90,7 +90,7 @@ var gameSocket = (function () {
                                 game.communityCard();
                                 
                                 //eval and print
-                                game.evalHands().printGame();
+                                game.evalHands();//.printGame();
                                 
                                 //send to all players river cards
                                 io.sockets.in(gameId).emit('River', game.getGame());
