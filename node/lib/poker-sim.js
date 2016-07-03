@@ -177,7 +177,7 @@ Game.prototype = {
         
         //output evaluate duration
         dt = new Date();
-        console.log('Evaluation took ' + (dt.getTime() - timer) / 1000 + ' seconds.');
+        //console.log('Evaluation took ' + (dt.getTime() - timer) / 1000 + ' seconds.');
         
         //determine percentages
         self.hands.forEach(function (hand) {
