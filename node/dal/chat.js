@@ -4,7 +4,7 @@ var chatDal = (function () {
     
     function _saveChat(_gameId, _playerId, _message, callback) {
         
-        var chat = new Chat({ gameId: _gameId, playerId: _playerId, message: _message });
+        var chat = new Chat({ gameId: _gameId, playerId: _playerId, message: _message, timestamp: new Date() });
         
         chat.save(function (err) {
 
