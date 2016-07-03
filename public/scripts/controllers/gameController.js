@@ -22,6 +22,7 @@
             
             //catch the new player event entered room from server
             socket.on('NewPlayerLeftGame', function (player) {
+                alert("NewPlayerLeftGame");
                 $scope.reloadGame();
             });
             
@@ -82,6 +83,10 @@
             socket.on('ChatWatchDog', function (from, message) {
                 $scope.chatStack += from.username + ":" + message + "<br>";
                 $scope.$apply();
+            });
+
+            socket.on('disconnect', function () {
+                socket.emit('PlayerLeftGame', $routeParams.gameId, $Player.get());
             });
         };
         
